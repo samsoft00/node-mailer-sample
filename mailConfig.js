@@ -30,8 +30,8 @@ module.exports = {
       from: '"Tribe Homes" <hello@tribe.homes>', // sender address
       to: `${process.env.EMAIL_USER}`, // list of receivers
       subject: 'New subscription: Tribe Landing page', // Subject line
-      text: `Email: ${subMail} just subscribe on Tribe Homes landing page`, // plain text body
-      html: `<b>Email: ${subMail} just subscribe on Tribe Homes landing page</b>` // html body
+      text: `Email: ${subMail} just Sign Up on Tribe Homes`, // plain text body
+      html: `<b>Email: ${subMail} just Sign Up on Tribe Homes</b>` // html body
     });
   }
 

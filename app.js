@@ -25,10 +25,14 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.post('/sendSubscriptionMail', async (req, res, next) => {
   let {email} = req.body;
+  let {password} = req.query;
 
-  Mailer.emit('SEND_WELCOME_MAIL', email);
-  res.status(200).send({});
+  if(password === process.env.PASSWORD){
+    Mailer.emit('SEND_WELCOME_MAIL', email);
+    return res.status(200).send({});
+  }
 
+  res.status(400).send({});
 });
 
 // catch 404 and forward to error handler
