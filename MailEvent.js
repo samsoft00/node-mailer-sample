@@ -11,7 +11,7 @@ class MailEvent extends EventEmitter{
     }
     async sendMail(data){
       await mailer.sendSubMail(data);
-      // await mailer.sendTribeHome(data);
+      await mailer.sendTribeHome(data);
     };
 }
 
