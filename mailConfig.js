@@ -1,4 +1,5 @@
 const nodemailer = require('nodemailer');
+var EmailTemplate = require('email-templates').EmailTemplate
 
 module.exports = {
   getMailTransport(){
@@ -15,13 +16,13 @@ module.exports = {
 
   async sendSubMail(email){
     let transporter = this.getMailTransport();
-    return await transporter.sendMail({
-      from: '"Tribe Homes" <hello@tribe.homes>', // sender address
-      to: email, // list of receivers
-      subject: 'Tribe Homes', // Subject line
-      text: 'Thanks for your subscription!', // plain text body
-      html: '<b>Thanks for your subscription</b>' // html body
-    });
+    let mailSender = transporter.templateSender(new EmailTemplate("views/mail/template/signup"), {from: '"Tribe Homes" <hello@tribe.homes>'});
+
+    mailSender(
+      {to: email, subject: 'Tribe Homes'},
+      {email},
+      function(err, info){}
+    );
   },
 
   async sendTribeHome(subMail){
